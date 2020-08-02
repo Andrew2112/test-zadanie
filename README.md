@@ -1,4 +1,6 @@
+<p>   Тестовое задание. Проект выполнен на Open Server 5.2.2 Требуется скачать проект в папку domains, а так же папку vendor фреймворка yii2 basic. Использовалась конфигурация Open Server: Apache 2.4, PHP 7.0, MySQL-5.6 Для работы необходимо установить Composer и зависимости из файла composer.json База данных проекта находиться в корневом каталоге в файле test_zadanie.sql. Вход в админку emzrs/admin (логин - admin, пароль - 123)</p>
 <p align="center">
+ 
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
     </a>
