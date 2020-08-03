@@ -13,5 +13,28 @@ $(document).ready(function () {
 
     });
 
-    $("#news-visible").attr("checked","checked");
+    $("#news-visible").attr("checked", "checked");
+
+    function showNews(news) {
+        $('#news-modal .modal-body').html(news);
+        $('#news-modal').modal();
+    }
+
+    $('.read-more').on('click', function () {
+        let id = $(this).data('id');
+        $.ajax({
+            url: '/site/view',
+            data: {id: id},
+            type: 'get',
+            success: function (res) {
+                if (!res) alert('ОШИБКА');
+                showNews(res);
+                //console.log(res);
+            },
+            error: function () {
+                alert('ERROR');
+            }
+        });
+        return false;
+    });
 });

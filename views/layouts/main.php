@@ -1,9 +1,11 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use app\widgets\Alert;
+use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -42,7 +44,7 @@ AppAsset::register($this);
             ['label' => 'Новости', 'url' => ['/site/news']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/admin']]
+            ['label' => 'Login', 'url' => ['/admin']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
@@ -77,7 +79,15 @@ AppAsset::register($this);
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
+<?php
+Modal::begin([
+/*    'header' => "<h3 class='text-center'><?=$news->title ; ?></h3>",*/
+    'id' => 'news-modal',
+    'footer' => '',
+]);
 
+Modal::end();
+?>
 <?php $this->endBody() ?>
 </body>
 </html>

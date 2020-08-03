@@ -127,13 +127,18 @@ class SiteController extends Controller
     public function actionNews()
     {
         //$news=News::find()->orderBy(['created_at'=> SORT_DESC])->all();
-        $query = News::find()->orderBy(['created_at' => SORT_DESC])->where(['visible'=>'1']);
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'pageSizeParam'=>false, 'forcePageParam'=>false]);
+        $query = News::find()->orderBy(['created_at' => SORT_DESC])->where(['visible' => '1']);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'pageSizeParam' => false, 'forcePageParam' => false]);
         $news = $query->offset($pages->offset)->limit($pages->limit)->all();
         return $this->render('about', compact('news', 'pages'));
     }
-    public function actionView($id){
-        $news=News::findOne($id);
-        return $this->render('view', compact('news'));
+
+    public function actionView($id)
+    {
+        $news = News::findOne($id);
+        if (empty($news)) return false;
+        $this->layout = false;
+        return $this->render('news-modal', compact('news'));
+        // return $this->render('view', compact('news'));
     }
 }

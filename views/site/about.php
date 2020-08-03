@@ -2,7 +2,9 @@
 
 /* @var $this yii\web\View */
 
+use yii\bootstrap\Modal;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
 $this->title = 'Новости';
@@ -29,7 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php $str=preg_replace('/<img[^>]+>/U','',$item->post)?>
                         <?=mb_strimwidth("{$str}", 0, 255, "...");?>
 
-                        <a href="<?=\yii\helpers\Url::to(['site/view', 'id'=>$item->id])?>" target="_blank">Читать дальше</a>
+<!--                        <a href="--><?//=Url::to(['site/view', 'id'=>$item->id])?><!--" target="_blank">Читать дальше</a>-->
+                        <a href="<?=Url::to(['site/view', 'id'=>$item->id])?>" class="read-more" data-id="<?=$item->id?>">Читать дальше</a>
+
                         <hr>
                     </div>
                 </div>
@@ -51,6 +55,3 @@ $this->params['breadcrumbs'][] = $this->title;
             <button class="btn btn-info show-news">Показать новости</button>
         </div>
     </div>
-
-
-

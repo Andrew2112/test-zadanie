@@ -30,7 +30,7 @@ class News extends ActiveRecord
     {
         return [
             [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
                     ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
@@ -47,7 +47,7 @@ class News extends ActiveRecord
     {
         return [
             [['title', 'post'], 'required'],
-            [['created_at', 'apdated_at'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['post'], 'string'],
             [['title', 'author'], 'string', 'max' => 255],
             [['author'], 'default', 'value'=>'Администрация БМИТ'],
